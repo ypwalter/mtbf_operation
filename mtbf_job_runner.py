@@ -335,10 +335,11 @@ class MtbfJobRunner(BaseActionRunner):
     def pre_flash(self):
         pass
 
-    def flash(self):
+    def flash(self,seconds):
         self.shallow_flash()
         self.full_flash()
         # workaround for waiting for boot
+        time.sleep(seconds)
 
     def post_flash(self):
         self.setup()
@@ -355,7 +356,7 @@ class MtbfJobRunner(BaseActionRunner):
             if self.get_free_device():
                 self.mtbf_options()
                 self.pre_flash()
-                self.flash()
+                self.flash(60)
                 self.port_forwarding(self.serial, self.port)
                 self.post_flash()
                 self.execute()
