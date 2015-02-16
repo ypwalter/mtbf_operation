@@ -335,18 +335,18 @@ class MtbfJobRunner(BaseActionRunner):
     def pre_flash(self):
         pass
 
-    def flash(self,seconds):
+    def flash(self):
         self.shallow_flash()
         self.full_flash()
-        # workaround for waiting for boot
-        time.sleep(seconds)
 
-    def post_flash(self):
+    def post_flash(self,seconds):
         self.setup()
         self.check_version()
         self.change_memory()
         self.add_7mobile_action()
         self.enable_certified_apps_debug()
+        # workaround for nexus5 warming up time
+        time.sleep(seconds)
 
     def collect_report(self):
         pass
@@ -356,9 +356,9 @@ class MtbfJobRunner(BaseActionRunner):
             if self.get_free_device():
                 self.mtbf_options()
                 self.pre_flash()
-                self.flash(60)
+                self.flash()
                 self.port_forwarding(self.serial, self.port)
-                self.post_flash()
+                self.post_flash(60)
                 self.execute()
                 self.collect_report()
         finally:
