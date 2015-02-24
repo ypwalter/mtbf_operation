@@ -11,7 +11,7 @@ delete-mtbf-env:
 
 utils: combo-runner virtual-env activate lib-install github-remove b2g-flash-tool
 
-v2.1: mtbf-v2.1 utils
+v2.1: mtbf-v2.1 utils custom-gaia
 
 vmaster: mtbf-vmaster utils custom-gaia
 
@@ -26,9 +26,11 @@ endif
 
 custom-gaia:
 ifdef gaiatest
+	cp -r ${gaiatest} .
 	. ${mtbf-env}/bin/activate; \
-		cd ${gaiatest}; \
-		python setup.py install;
+	cd $(shell basename ${gaiatest}); \
+	python setup.py install; \
+	rm -rf $(shell basename ${gaiatest})
 else
 	echo use default gaiatest
 endif

@@ -28,7 +28,7 @@ Parameters:
 
 Customization:
 
-1. To install gaia-ui-test from different path, change by gaiatest={gaiatest_path}, e.g., "make vmaster gaiatest=gaia/tests/python/gaia-ui-test/"
+1. To install gaia-ui-test from different path, change by gaiatest={gaiatest_path}, e.g., "make vmaster gaiatest=/gaia/tests/python/gaia-ui-tests/"
 2. Install virtual environment to a specific path, use mtbf-env={venv_path}, same as #1
 
 
