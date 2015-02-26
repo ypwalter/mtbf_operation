@@ -2,7 +2,7 @@ mtbf_operation
 ==============
 To setup mtbf environment for lab testing.  It will help to pull dependencies, flashing and/or executing tests
 
-For MTBF specific problem, please refer to [mtbf driver repo](https://github.com/Mozilla-TWQA/MTBF-Driver)
+For MTBF specific problem, please refer to https://github.com/Mozilla-TWQA/MTBF-Driver
 
 Dependencies:
 * MTBF-Driver
@@ -31,7 +31,7 @@ Parameters:
 
 
 Download build from pvt
-* Using [B2G-flash-tool repo](https://github.com/Mozilla-TWQA/B2G-flash-tool) to do auth, downloading, flashing.
+* Using [https://github.com/Mozilla-TWQA/B2G-flash-tool | B2G-flash-tool] to do auth, downloading, flashing.
 * Donwloaded build is set "pvt/" by default.
 * If you only want to download builds, using b2g_downloader.py in flash_tool, it will run downloading but not flashing.
 
