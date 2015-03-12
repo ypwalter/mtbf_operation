@@ -283,9 +283,11 @@ class MtbfJobRunner(BaseActionRunner):
     def mtbf_options(self):
         ## load mtbf parameters
         if not 'MTBF_TIME' in os.environ:
-            logger.warning("MTBF_TIME is not set")
+            logger.info("MTBF_TIME is not set, using default value 120.")
+            os.environ["MTBF_TIME"] = "120"
         if not 'MTBF_CONF' in os.environ:
-            logger.warning("MTBF_CONF is not set")
+            logger.info("MTBF_CONF is not set, using default.conf")
+            os.environ["MTBF_CONF"] = "default.conf"
 
         parser = self.parser.parser
         parser.add_argument("--testvars", help="Test variables for b2g")
@@ -294,12 +296,14 @@ class MtbfJobRunner(BaseActionRunner):
         mtbf_testvars_dir = "/mnt/mtbf_shared/testvars"
         if not hasattr(self.options, 'testvars') or not self.options.testvars:
             testvars = os.path.join(mtbf_testvars_dir, "testvars_" + self.serial + ".json")
-            logger.info("testvar is [" + testvars + "]")
             if os.path.exists(testvars):
                 self.options.testvars = parser.testvars = testvars
                 logger.info("testvar [" + testvars + "] found")
             else:
-                raise AttributeError("testvars[" + testvars + "] doesn't exist")
+                if os.path.exists(os.path.join(os.getcwd(), "default.json")): 
+                    logger.info("using default testvars.json")
+                else:
+                    raise AttributeError("default testvars doesn't exist")
 
         ## #TODO: finish parsing arguments for flashing
         ## parser.add_argument("--flashdir", help="directory for pulling build")
@@ -380,4 +384,13 @@ class MtbfJobRunner(BaseActionRunner):
 
 if __name__ == '__main__':
     mjr = MtbfJobRunner()
+
+    ## use default settings if no assigned
+    settings_argv = False
+    for e in sys.argv[1:]:
+        if '--settings' in e:
+            settings_argv = True
+    if settings_argv <> True:
+        sys.argv.insert(1, "--settings=tasks/task_default.json")
+
     mjr.run()

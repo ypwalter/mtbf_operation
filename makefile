@@ -11,6 +11,8 @@ delete-mtbf-env:
 
 utils: combo-runner virtual-env activate lib-install github-remove b2g-flash-tool b2g-tool
 
+v2.2: mtbf-v2.2 utils custom-gaia
+
 v2.1: mtbf-v2.1 utils custom-gaia
 
 vmaster: mtbf-vmaster utils custom-gaia
@@ -57,10 +59,13 @@ github-remove:
 	@rm -rf MTBF-Driver combo-runner
 
 mtbf-vmaster: mtbf-driver
-	@cd MTBF-Driver && git checkout master;
+	@cd MTBF-Driver && git checkout master && cp mtbf_driver/conf/default_v300.json mtbf_driver/conf/default.json;
+
+mtbf-v2.2: mtbf-driver
+	@cd MTBF-Driver && git checkout v2.2 && cp mtbf_driver/conf/default_v220.json mtbf_driver/conf/default.json;
 
 mtbf-v2.1: mtbf-driver
-	@cd MTBF-Driver && git checkout v2.1;
+	@cd MTBF-Driver && git checkout v2.1 && cp mtbf_driver/conf/default_v210.json mtbf_driver/conf/default.json;
 
 combo-runner:
 	@git clone https://github.com/zapion/combo-runner.git;

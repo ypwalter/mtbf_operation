@@ -1,0 +1,44 @@
+{
+  "skip_warning": true,
+  "acknowledged_risks": true,
+  "local_phone_numbers":["+886930092761"],
+  "settings": {
+    "ril.cellbroadcast.disabled": true,
+    "time.timezone": "Asia/Taipei",
+    "time.timezone.user-selected": "Asia/Taipei"
+  },
+  "imei": ["864332020603116","864332020603124"],
+  "remote_phone_number": "+886978725105",
+  "wifi": {
+    "ssid": "Mozilla Guest"
+  },
+  "marketplace": {
+    "username": "",
+    "password": ""
+  },
+  "email": {
+    "gmail": {
+      "name": "",
+      "email": "",
+      "password": ""
+    },
+    "IMAP": {
+      "name": "",
+      "email": "",
+      "password": "",
+      "imap_hostname": "",
+      "imap_name": "",
+      "imap_port": "",
+      "smtp_hostname": "",
+      "smtp_name": "",
+      "smtp_port": ""
+    },
+    "ActiveSync":{
+      "name": "",
+      "email": "",
+      "password": "",
+      "active_sync_hostname": "",
+      "active_sync_username": ""
+    }
+  }
+}
