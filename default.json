@@ -1,16 +1,14 @@
 {
-  "skip_warning": true,
-  "acknowledged_risks": true,
-  "local_phone_numbers":["+886930092761"],
+  "local_phone_numbers":[""],
   "settings": {
     "ril.cellbroadcast.disabled": true,
     "time.timezone": "Asia/Taipei",
     "time.timezone.user-selected": "Asia/Taipei"
   },
-  "imei": ["864332020603116","864332020603124"],
-  "remote_phone_number": "+886978725105",
+  "imei": ["",""],
+  "remote_phone_number": "",
   "wifi": {
-    "ssid": "Mozilla Guest"
+    "ssid": ""
   },
   "marketplace": {
     "username": "",
