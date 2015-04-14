@@ -49,6 +49,7 @@ class MtbfJobRunner(BaseActionRunner):
         BaseActionRunner.__init__(self)
 
     def setup(self):
+        import time; time.sleep(120);
         if not self.serial or not self.port:
             logger.error("Fail to get device")
             raise DMError
